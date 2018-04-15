@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script>
+            $(document).ready(function(){
+                $("#cbutton").click(function(){
+                    $("#div1").load("{% url 'app1:create' %}");
+                });
+            });
+            </script>
+            <script>
+                    $(document).ready(function(){
+                        $("#form1").submit(function(){
+                            $.ajax({ 
+                                type: $(this).attr('method'), // GET or POST
+                                url: $(this).attr('action'), // the file to call
+                                data: $(this).serialize(), // get the form data
+                                success: function() {
+                                    $('#head2').hide()
+                                    $("#maindiv").load("{% url 'app1:dashboard' %}");
+                                    }
+                                });
+                            return false;
+                            });
+                        });
+            </script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <style>
+            .btn-primary {
+                background: #4285f4;
+                border: 1px solid #1266f1;
+                color: #ffffff;
+                font-family: 'Open Sans', sans-serif;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: 0.23px;
+                padding: 12px 32px;
+                text-align: center;
+                text-decoration: none;
+                text-transform: uppercase;
+        </style>
+        <title>
+        {% block title %}
+            {% endblock %}
+        </title>
+    </head>
+    <body>
+        <div class="container">
+        <h2 id="head2">
+        Event Management Web-App
+        </h2>
+        </div>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

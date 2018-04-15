@@ -1,0 +1,11 @@
+{% extends 'app1/layout.html' %}
+{% block content %}
+<div class="container">
+    <br>
+    <div class="jumbotron">
+<a href= "{% url 'app1:login' %}" class="btn-primary">LOGIN</a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href= "{% url 'app1:register' %}" class="btn-primary">SIGN-UP</a>
+</div>
+</div>
+{% endblock %}

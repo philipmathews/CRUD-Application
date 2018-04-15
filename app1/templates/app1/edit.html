@@ -1,0 +1,13 @@
+{% extends 'app1/layout.html' %}
+{% block title %}CREATE{% endblock %}
+{% block content %}
+<div class="container">
+  <h3>EDIT EVENT</h3>
+  <br>
+  <form method="POST" action ="{% url 'app1:edit' event.id  %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">EDIT</button>
+  </form>
+</div>
+{% endblock %}

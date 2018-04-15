@@ -1,0 +1,16 @@
+{% extends 'app1/layout.html' %}
+{% block title %}CREATE{% endblock %}
+{% block content %}
+<div class="container">
+  <h3>CREATE EVENT</h3>
+  <br>
+  <form id="form1" method="POST" action ="{% url 'app1:create' %}" >
+    <div class="form-group">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button id="bu1" type="submit">Create</button>
+    <strong>(format of date is: "%Y-%m-%d %H:%M:%S")</strong>
+    </div>
+  </form>
+</div>
+{% endblock %}
